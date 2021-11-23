@@ -4,12 +4,12 @@
         <a routerLink="/detail/{{hero.id}}">
         <span class="badge">{{hero.id}}</span> {{hero.name}}
         </a>
-        <button class="delete" title="Lösch dich du Opfer" (click)="delete(hero)">y</button>
+        <button class="delete" title="Löschen" (click)="delete(hero)">Löschen</button>
     </li>
 </ul>
 <div>
-    <label for="new-hero">Hero name:</label>
+    <label for="new-hero">Name:</label>
     <input id="new-hero" #heroName />
 
-    <button class="add-button" (click)="add(heroName.value); heroName.value=''">Füch nen Held dazu</button>
+    <button class="add-button" (click)="add(heroName.value); heroName.value=''">Füg nen Held dazu</button>
 </div>

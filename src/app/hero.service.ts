@@ -33,20 +33,20 @@ export class HeroService {
     const url = `${this.heroesURL}/${id}`;
     return this.httpClient.get<Hero>(url)
       .pipe(
-        tap(_ => this.log(`fetched hero mit der dollen id ${id}`)),
-        catchError(this.handleError<Hero>(`fehler beim getten vom hero miter id ${id}`))
+        tap(_ => this.log(`fetched hero mit der id ${id}`)),
+        catchError(this.handleError<Hero>(`fehler beim getten vom hero mit id ${id}`))
       )
   }
   updateHero(hero: Hero): Observable<any> {
     return this.httpClient.put(this.heroesURL, hero, this.httpOptions).pipe(
-      tap(_ => this.log(`ubtatet held mid ihde ${hero.id}`)),
+      tap(_ => this.log(`updated held mit id ${hero.id}`)),
       catchError(this.handleError<any>('updateHero'))
     );
   }
 
   addHero(hero: Hero): Observable<Hero> {
     return this.httpClient.post<Hero>(this.heroesURL, hero, this.httpOptions).pipe(
-      tap(newHero => this.log(`added hero with id ${newHero.id}`)),
+      tap(newHero => this.log(`added  held mit id ${newHero.id}`)),
       catchError(this.handleError<Hero>('addededededHero'))
     )
   }
@@ -55,7 +55,7 @@ export class HeroService {
     const url = `${this.heroesURL}/${id}`;
 
     return this.httpClient.delete<Hero>(url, this.httpOptions).pipe(
-      tap(_ => this.log(`voll gelöscht junge..hahahahaha hahaha hahahahahahhahahhahahhhnhnhnhnhihihi oh man ist das dumm ey hahahaha ${id}`)),
+      tap(_ => this.log(`voll gelöscht junge..hahahahaha hahaha hahahahahahhahahhahahhhnhnhnhnhihihi ${id}`)),
       catchError(this.handleError<Hero>('deleteHero')))
   }
 
@@ -65,8 +65,8 @@ export class HeroService {
 
     if (term.trim()) {
       result = this.httpClient.get<Hero[]>(url).pipe(
-        tap(x => x.length ? this.log(`hab nen helden jefunden für "${term}"`) :
-          this.log(`sorry nix jefunden für "${term}"`)),
+        tap(x => x.length ? this.log(`hab nen helden gefunden für "${term}"`) :
+          this.log(`sorry nix gefunden für "${term}"`)),
         catchError(this.handleError<Hero[]>('searchHeroes', []))
       )
     }
